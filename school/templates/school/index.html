@@ -1,0 +1,301 @@
+{% extends 'school/layout.html'%} {%block content%}
+<div class='container-fluid'>
+
+    <nav class="navbar navbar-light bg-blue" style="background-color:rgb(236, 238, 238); margin-right:70px;">
+        <a class="navbar-brand">School Management System</a>
+        <form class="form-inline">
+
+
+            <h5 style="margin-left: 300px;">Welcome
+                <B>{{user.username}}{{name}}</B>
+            </h5>
+
+            <a href="/logout" style="margin-left:80px;" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">LOGOUT</a>
+
+        </form>
+    </nav>
+    <div class="row">
+        <div class="col-2"><br>
+            <div class="list-group" id="list-tab" role="tablist">
+                <a class="list-group-item list-group-item-action active" id="list-dashboard-list" data-toggle="tab" href="#dashboard" role="tab" aria-controls="dashboard"><span class="glyphicon glyphicon-home"></span> DASHBOARD</a>
+                <a class="list-group-item list-group-item-action" id="list-student-list" data-toggle="tab" href="#student" role="tab" aria-controls="students"><span class="glyphicon glyphicon-education"></span> STUDENTS</a>
+                <a class="list-group-item list-group-item-action" id="list-teachers-list" data-toggle="tab" href="#teachers" role="tab" aria-controls="teachers"><span class="glyphicon glyphicon-user"></span> TEACHERS</a>
+                <a class="list-group-item list-group-item-action" id="list-other-list" data-toggle="tab" href="#other" role="tab" aria-controls="other"><span class="glyphicon glyphicon-user"></span> OTHER STAFF</a>
+                <a class="list-group-item list-group-item-action" id="list-courses-list" data-toggle="tab" href="#courses" role="tab" aria-controls="courses"><span class="glyphicon glyphicon-education"></span> COURSES</a>
+                <a class="list-group-item list-group-item-action" id="list-parents-list" data-toggle="tab" href="#parents" role="tab" aria-controls="parents"><span class="glyphicon glyphicon-user"></span> PARENTS</a>
+                <a class="list-group-item list-group-item-action" id="list-fees-list" data-toggle="tab" href="#fees" role="tab" aria-controls="fees"><span class="glyphicon glyphicon-usd"></span> FEES</a>
+                <a class="list-group-item list-group-item-action" id="list-admin-list" data-toggle="tab" href="#admin" role="tab" aria-controls="admin"><span class="glyphicon glyphicon-user"></span> ADMIN</a>
+                <a class="list-group-item list-group-item-action" id="list-mail-list" data-toggle="tab" href="#mail" role="tab" aria-controls="email"><span class="glyphicon glyphicon-envelope"></span> SEND MAIL</a>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="tab-content" id="nav-tabContent"><br>
+                <div class="tab-pane fade active" id="dashboard" role="tabpanel" aria-labelledby="list-dashboard-list">
+                    {{user.username}}
+                </div>
+
+                <div class="tab-pane fade" id="student" role="tabpanel" aria-labelledby="list-student-list">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">BirthDate</th>
+                                <th scope="col">Class</th>
+                                <th scope="col">DateJoined</th>
+
+                                <th scope="col"><a href="/school/index.html#student/getfile"><span class="glyphicon glyphicon-print"></span></a> </th>
+
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {%for s in u %}
+                            <tr>
+                                <th scope="row">{{s.id}}</th>
+                                <td>{{s.s_fname}} {{name}}</td>
+                                <td>{{s.s_lname}}{{mm}}</td>
+                                <td>{{s.s_lname}}</td>
+                                <td>{{s.s_class}}</td>
+                                <td>{{s.s_datejoined}}</td>
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+                <div class="tab-pane fade" id="teachers" role="tabpanel" aria-labelledby="list-teachers-list">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Course</th>
+                                <th scope="col">Position</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Salary</th>
+                                <th scope="col">DateJoined</th>
+                                <th scope="col"><a href="#"><span class="glyphicon glyphicon-print"></span></a></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for tea in T%}
+                            <tr>
+                                <th scope="row">{{tea.id}}</th>
+                                <td>{{tea.t_fname}}</td>
+                                <td>{{tea.t_lname}}</td>
+                                <td>{{tea.t_course}}</td>
+                                <td>{{tea.t_position}}</td>
+                                <td>{{tea.t_email}}</td>
+                                <td>{{tea.t_salary}}</td>
+                                <td>{{tea.t_datejoined}}</td>
+                                <td>
+
+                                    <a href="#" style="margin-left: 10px;color:green;size:30px"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    <a href="#" style="margin-left: 40px; color:red; size:30px"><span class="glyphicon glyphicon-trash"></span></a>
+                                </td>
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+                <div class="tab-pane fade" id="other" role="tabpanel" aria-labelledby="list-other-list">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Position</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Salary</th>
+                                <th scope="col">DateJoined</th>
+                                <th scope="col"><a href="#"><span class="glyphicon glyphicon-print"></span></a></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for s in O%}
+                            <tr>
+                                <th scope="row">{{s.id}}</th>
+                                <td>{{s.n_fname}}</td>
+                                <td>{{s.n_lname}}</td>
+                                <td>{{s.n_position}}</td>
+                                <td>{{s.n_email}}</td>
+                                <td>{{s.n_salary}}</td>
+                                <td>{{s.n_datejoined}}</td>
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tab-pane fade" id="courses" role="tabpanel" aria-labelledby="list-courses-list">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Course Name</th>
+                                <th scope="col">Course Duration</th>
+                                <th scope="col">Teacher ID</th>
+                                <th scope="col"><a href="#"><span class="glyphicon glyphicon-print"></span></a></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for s in C%}
+                            <tr>
+                                <th scope="row">{{s.id}}</th>
+                                <td>{{s.c_name}}</td>
+                                <td>{{s.c_duration}}</td>
+                                <td>{{s.teach_id}}</td>
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="tab-pane fade" id="parents" role="tabpanel" aria-labelledby="list-parents-list">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Contact</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Student ID</th>
+                                <th scope="col"><a href="#"><span class="glyphicon glyphicon-print"></span></a></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for s in P%}
+                            <tr>
+                                <th scope="row">{{s.id}}</th>
+                                <td>{{s.p_fname}}</td>
+                                <td>{{s.p_lname}}</td>
+                                <td>{{s.p_contact}}</td>
+                                <td>{{s.p_email}}</td>
+                                <td>{{s.stu_id}}</td>
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="tab-pane fade" id="fees" role="tabpanel" aria-labelledby="list-fees-list">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Class</th>
+                                <th scope="col">Amt_Owed</th>
+                                <th scope="col">Student ID</th>
+                                <th scope="col"><a href="#"><span class="glyphicon glyphicon-print"></span></a></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for s in Student%}
+                            <tr>
+                                <th scope="row">{{s.id}}</th>
+                                <td>{{s.f_fname}}</td>
+                                <td>{{s.f_lname}}</td>
+                                <td>{{s.f_class}}</td>
+                                <td>{{s.f_amt}}</td>
+                                <td>{{s.f_stu}}</td>
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="tab-pane fade" id="admin" role="tabpanel" aria-labelledby="list-admin-list">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">UserName</th>
+                                <th scope="col">DateJoined</th>
+                                <th scope="col"><a href="#"><span class="glyphicon glyphicon-print"></span></a></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for s in m%}
+                            <tr>
+                                <th scope="row">{{s.id}}</th>
+                                <td>{{s.username}}</td>
+                                <td>{{s.date_joined}}</td>
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="tab-pane fade" id="mail" role="tabpanel" aria-labelledby="list-mail-list">
+                    <form method="POST" action="mail/" style="margin-left: 150px;">
+                        {%csrf_token%}
+                        <div class="form-group row"><br>
+                            <label for="inputEmail" class="col-sm-2 col-form-label">EMAIL</label>
+                            <div class="col-sm-6">
+                                <input type="email" class="form-control" name="email" id="inputEmail" placeholder="email" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row"><br>
+                            <label for="inputText" class="col-sm-2 col-form-label">TITLE</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="text" id="inputText" placeholder="Message Title" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="exampleFormControlTextarea" class="col-sm-2 col-form-label">MESSAGE</label>
+                            <div class="col-sm-6">
+                                <textarea class="form-control" name="message" id="exampleFormControlTextarea" rows="10" required>
+                         
+                                </textarea><br>
+                                <button type="submit" class="btn btn-primary">SEND MESSAGE</button>
+                            </div>
+                        </div>
+
+
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <hr>
+
+    <div class="card text-center">
+
+        <div class="card-body w-100">
+
+            <p class="card-text">DESIGNED BY</p>
+            <p class="btn btn-primary">MAXWELL SARPONG</p>
+        </div>
+
+    </div>
+
+</div>
+
+{%endblock content%}
