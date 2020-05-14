@@ -38,6 +38,7 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
+                                <input class="form-control" id="myInput" type="text" placeholder="Search.."><br>
                                 <th scope="col">ID</th>
                                 <th scope="col">First Name</th>
                                 <th scope="col">Last Name</th>
@@ -51,9 +52,10 @@
 
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="myTable">
                             {%for s in S %}
                             <tr>
+
                                 <th scope="row">{{s.id}}</th>
                                 <td>{{s.s_fname}} {{name}}</td>
                                 <td>{{s.s_lname}}{{mm}}</td>
@@ -62,7 +64,7 @@
                                 <td>{{s.s_datejoined}}</td>
                                 <td>
                                     <a href="#" style="margin-left: 10px;color:green;size:30px"><span class="glyphicon glyphicon-pencil"></span></a>
-                                    <a href="/destroy1" style="margin-left: 40px; color:red; size:30px"><span class="glyphicon glyphicon-trash"></span></a>
+                                    <a href="/destroy1" style="margin-left: 40px; color:rgb(223, 22, 22); size:30px"><span class="glyphicon glyphicon-trash"></span></a>
                                 </td>
                             </tr>
                             {%endfor%}
@@ -76,6 +78,7 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
+                                <input class="form-control" id="myInput" type="text" placeholder="Search.."><br>
                                 <th scope="col">ID</th>
                                 <th scope="col">First Name</th>
                                 <th scope="col">Last Name</th>
@@ -88,7 +91,7 @@
 
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="myTable">
                             {% for tea in T%}
                             <tr>
                                 <th scope="row">{{tea.id}}</th>
@@ -116,6 +119,7 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
+                                <input class="form-control" id="myInput" type="text" placeholder="Search.."><br>
                                 <th scope="col">ID</th>
                                 <th scope="col">First Name</th>
                                 <th scope="col">Last Name</th>
@@ -127,7 +131,7 @@
 
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="myTable">
                             {% for n in N%}
                             <tr>
                                 <th scope="row">{{n.id}}</th>
@@ -151,6 +155,7 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
+                                <input class="form-control" id="myInput" type="text" placeholder="Search.."><br>
                                 <th scope="col">ID</th>
                                 <th scope="col">Course Name</th>
                                 <th scope="col">Course Duration</th>
@@ -158,7 +163,7 @@
                                 <th scope="col"><a href="/getfile"><span class="glyphicon glyphicon-print"></span></a></th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="myTable">
                             {% for c in C%}
                             <tr>
                                 <th scope="row">{{c.id}}</th>
@@ -180,6 +185,7 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
+                                <input class="form-control" id="myInput" type="text" placeholder="Search.."><br>
                                 <th scope="col">ID</th>
                                 <th scope="col">First Name</th>
                                 <th scope="col">Last Name</th>
@@ -189,7 +195,7 @@
                                 <th scope="col"><a href="/getfile"><span class="glyphicon glyphicon-print"></span></a></th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="myTable">
                             {% for p in P%}
                             <tr>
                                 <th scope="row">{{p.id}}</th>
@@ -213,6 +219,7 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
+                                <input class="form-control" id="myInput" type="text" placeholder="Search.."><br>
                                 <th scope="col">ID</th>
                                 <th scope="col">First Name</th>
                                 <th scope="col">Last Name</th>
@@ -222,7 +229,7 @@
                                 <th scope="col"><a href="/getfile"><span class="glyphicon glyphicon-print"></span></a></th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="myTable">
                             {% for f in Fees%}
                             <tr>
                                 <th scope="row">{{f.id}}</th>
@@ -266,7 +273,7 @@
 
 
                 <div class="tab-pane fade" id="mail" role="tabpanel" aria-labelledby="list-mail-list">
-                    <form method="POST" action="mail/" style="margin-left: 150px;">
+                    <form method="POST" action="/mail" style="margin-left: 150px;">
                         {%csrf_token%}
                         <div class="form-group row"><br>
                             <label for="inputEmail" class="col-sm-2 col-form-label">EMAIL</label>
@@ -278,14 +285,14 @@
                         <div class="form-group row"><br>
                             <label for="inputText" class="col-sm-2 col-form-label">TITLE</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" name="text" id="inputText" placeholder="Message Title" required>
+                                <input type="text" class="form-control" name="title" id="inputText" placeholder="Message Title" required>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="exampleFormControlTextarea" class="col-sm-2 col-form-label">MESSAGE</label>
                             <div class="col-sm-6">
-                                <textarea class="form-control" name="message" id="exampleFormControlTextarea" rows="10" required>
+                                <textarea class="form-control" name="msg" id="exampleFormControlTextarea" rows="10" required>
                          
                                 </textarea><br>
                                 <button type="submit" class="btn btn-primary">SEND MESSAGE</button>
@@ -306,16 +313,29 @@
 
     <hr>
 
-    <div class="card text-center">
+    <footer style="background-color: rgb(25, 25, 175); color:white;">
 
-        <div class="card-body w-100">
+        <div style="text-align: center;">
 
             <p class="card-text">DESIGNED BY</p>
-            <p class="btn btn-primary">MAXWELL SARPONG</p>
+            <p>MAXWELL SARPONG</p>
         </div>
-
-    </div>
+    </footer>
 
 </div>
+
+</div>
+
+
+<script>
+    $(document).ready(function() {
+        $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
 
 {%endblock content%}

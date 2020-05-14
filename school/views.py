@@ -90,6 +90,21 @@ def login(request):
 
 # email processing
 def mail(request):  
+    if request.method == "POST":
+        subject = request.POST['title']
+        msg     = request.POST['msg'] 
+        to      = request.POST['email']  
+        res     = send_mail(subject, msg, settings.EMAIL_HOST_USER, [to])  
+        if(res == 1):  
+            messages.info(request, "Mail Sent Successfuly")  
+            return redirect('school/index.html')
+        else:  
+            messages.info(request, "Mail could not sent")  
+        return redirect('school/index.html')  
+
+"""
+# email processing
+def mail(request):  
     subject = "Greetings"  
     msg     = "Congratulations for your success on winning"  
     to      = "maxquophi@gmail.com"  
@@ -99,3 +114,4 @@ def mail(request):
     else:  
         msg = "Mail could not sent"  
     return HttpResponse(msg)  
+"""
