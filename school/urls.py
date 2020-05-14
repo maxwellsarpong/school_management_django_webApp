@@ -4,15 +4,16 @@ from .import views
 
 
 urlpatterns = [
-    url(r'^$', views.login, name='login'),
-    url('index', views.index, name='index'),
-    url('show', views.show, name='show'),
+    url('index2', views.index2, name='index2'),
+    url('login', views.login, name='login'),
+    url(r'^$', views.index, name='index'),
     url('logout', views.logout, name='logout'),
-    url('show1', views.show1, name='show1'),
-    url('show2', views.show2, name='show2'),
-    url('show3', views.show3, name='show3'),
-    url('show4', views.show4, name='show4'),
-    url('show5', views.show5, name='show5'),
     url('csv', views.getfile),
     url('mail', views.mail),
+    url('^delete/(?P<id>\d+)/$', views.destroy, name = 'destroy'),
+    url('^delete/(?P<id>\d+)/$', views.destroy1, name = 'destroy1'),
+    url('^delete/(?P<id>\d+)/$', views.destroy2, name = 'destroy2'),
+    url('^delete/(?P<id>\d+)/$', views.destroy3, name = 'destroy3'),
+    url('^delete/(?P<id>\d+)/$', views.destroy4, name = 'destroy4'),
+    url('^delete/(?P<id>\d+)/$', views.destroy5, name = 'destroy5'),
 ]

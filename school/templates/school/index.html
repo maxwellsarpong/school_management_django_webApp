@@ -45,21 +45,25 @@
                                 <th scope="col">Class</th>
                                 <th scope="col">DateJoined</th>
 
-                                <th scope="col"><a href="/school/index.html#student/getfile"><span class="glyphicon glyphicon-print"></span></a> </th>
+                                <th scope="col"><a href="/getfile"><span class="glyphicon glyphicon-print"></span></a> </th>
 
 
 
                             </tr>
                         </thead>
                         <tbody>
-                            {%for s in u %}
+                            {%for s in S %}
                             <tr>
                                 <th scope="row">{{s.id}}</th>
                                 <td>{{s.s_fname}} {{name}}</td>
                                 <td>{{s.s_lname}}{{mm}}</td>
-                                <td>{{s.s_lname}}</td>
+                                <td>{{s.s_bdate}}</td>
                                 <td>{{s.s_class}}</td>
                                 <td>{{s.s_datejoined}}</td>
+                                <td>
+                                    <a href="#" style="margin-left: 10px;color:green;size:30px"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    <a href="/destroy1" style="margin-left: 40px; color:red; size:30px"><span class="glyphicon glyphicon-trash"></span></a>
+                                </td>
                             </tr>
                             {%endfor%}
                         </tbody>
@@ -80,7 +84,7 @@
                                 <th scope="col">Email</th>
                                 <th scope="col">Salary</th>
                                 <th scope="col">DateJoined</th>
-                                <th scope="col"><a href="#"><span class="glyphicon glyphicon-print"></span></a></th>
+                                <th scope="col"><a href="/getfile"><span class="glyphicon glyphicon-print"></span></a></th>
 
                             </tr>
                         </thead>
@@ -98,7 +102,7 @@
                                 <td>
 
                                     <a href="#" style="margin-left: 10px;color:green;size:30px"><span class="glyphicon glyphicon-pencil"></span></a>
-                                    <a href="#" style="margin-left: 40px; color:red; size:30px"><span class="glyphicon glyphicon-trash"></span></a>
+                                    <a href="/destroy" style="margin-left: 40px; color:red; size:30px"><span class="glyphicon glyphicon-trash"></span></a>
                                 </td>
                             </tr>
                             {%endfor%}
@@ -119,20 +123,24 @@
                                 <th scope="col">Email</th>
                                 <th scope="col">Salary</th>
                                 <th scope="col">DateJoined</th>
-                                <th scope="col"><a href="#"><span class="glyphicon glyphicon-print"></span></a></th>
+                                <th scope="col"><a href="/getfile"><span class="glyphicon glyphicon-print"></span></a></th>
 
                             </tr>
                         </thead>
                         <tbody>
-                            {% for s in O%}
+                            {% for n in N%}
                             <tr>
-                                <th scope="row">{{s.id}}</th>
-                                <td>{{s.n_fname}}</td>
-                                <td>{{s.n_lname}}</td>
-                                <td>{{s.n_position}}</td>
-                                <td>{{s.n_email}}</td>
-                                <td>{{s.n_salary}}</td>
-                                <td>{{s.n_datejoined}}</td>
+                                <th scope="row">{{n.id}}</th>
+                                <td>{{n.n_fname}}</td>
+                                <td>{{n.n_lname}}</td>
+                                <td>{{n.n_position}}</td>
+                                <td>{{n.n_email}}</td>
+                                <td>{{n.n_salary}}</td>
+                                <td>{{n.n_datejoined}}</td>
+                                <td>
+                                    <a href="#" style="margin-left: 10px;color:green;size:30px"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    <a href="/destroy3" style="margin-left: 40px; color:red; size:30px"><span class="glyphicon glyphicon-trash"></span></a>
+                                </td>
                             </tr>
                             {%endfor%}
                         </tbody>
@@ -147,16 +155,20 @@
                                 <th scope="col">Course Name</th>
                                 <th scope="col">Course Duration</th>
                                 <th scope="col">Teacher ID</th>
-                                <th scope="col"><a href="#"><span class="glyphicon glyphicon-print"></span></a></th>
+                                <th scope="col"><a href="/getfile"><span class="glyphicon glyphicon-print"></span></a></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for s in C%}
+                            {% for c in C%}
                             <tr>
-                                <th scope="row">{{s.id}}</th>
-                                <td>{{s.c_name}}</td>
-                                <td>{{s.c_duration}}</td>
-                                <td>{{s.teach_id}}</td>
+                                <th scope="row">{{c.id}}</th>
+                                <td>{{c.c_name}}</td>
+                                <td>{{c.c_duration}}</td>
+                                <td>{{c.teach_id}}</td>
+                                <td>
+                                    <a href="#" style="margin-left: 10px;color:green;size:30px"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    <a href="index2/destroy5" style="margin-left: 40px; color:red; size:30px"><span class="glyphicon glyphicon-trash"></span></a>
+                                </td>
                             </tr>
                             {%endfor%}
                         </tbody>
@@ -174,18 +186,22 @@
                                 <th scope="col">Contact</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Student ID</th>
-                                <th scope="col"><a href="#"><span class="glyphicon glyphicon-print"></span></a></th>
+                                <th scope="col"><a href="/getfile"><span class="glyphicon glyphicon-print"></span></a></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for s in P%}
+                            {% for p in P%}
                             <tr>
-                                <th scope="row">{{s.id}}</th>
-                                <td>{{s.p_fname}}</td>
-                                <td>{{s.p_lname}}</td>
-                                <td>{{s.p_contact}}</td>
-                                <td>{{s.p_email}}</td>
-                                <td>{{s.stu_id}}</td>
+                                <th scope="row">{{p.id}}</th>
+                                <td>{{p.p_fname}}</td>
+                                <td>{{p.p_lname}}</td>
+                                <td>{{p.p_contact}}</td>
+                                <td>{{p.p_email}}</td>
+                                <td>{{p.stu_id}}</td>
+                                <td>
+                                    <a href="#" style="margin-left: 10px;color:green;size:30px"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    <a href="/destroy4" style="margin-left: 40px; color:red; size:30px"><span class="glyphicon glyphicon-trash"></span></a>
+                                </td>
                             </tr>
                             {%endfor%}
                         </tbody>
@@ -203,18 +219,22 @@
                                 <th scope="col">Class</th>
                                 <th scope="col">Amt_Owed</th>
                                 <th scope="col">Student ID</th>
-                                <th scope="col"><a href="#"><span class="glyphicon glyphicon-print"></span></a></th>
+                                <th scope="col"><a href="/getfile"><span class="glyphicon glyphicon-print"></span></a></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for s in Student%}
+                            {% for f in Fees%}
                             <tr>
-                                <th scope="row">{{s.id}}</th>
-                                <td>{{s.f_fname}}</td>
-                                <td>{{s.f_lname}}</td>
-                                <td>{{s.f_class}}</td>
-                                <td>{{s.f_amt}}</td>
-                                <td>{{s.f_stu}}</td>
+                                <th scope="row">{{f.id}}</th>
+                                <td>{{f.f_fname}}</td>
+                                <td>{{f.f_lname}}</td>
+                                <td>{{f.f_class}}</td>
+                                <td>{{f.f_amt}}</td>
+                                <td>{{f.f_stu_id}}</td>
+                                <td>
+                                    <a href="#" style="margin-left: 10px;color:green;size:30px"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    <a href="/index2/destroy2" style="margin-left: 40px; color:red; size:30px"><span class="glyphicon glyphicon-trash"></span></a>
+                                </td>
                             </tr>
                             {%endfor%}
                         </tbody>
@@ -229,15 +249,15 @@
                                 <th scope="col">ID</th>
                                 <th scope="col">UserName</th>
                                 <th scope="col">DateJoined</th>
-                                <th scope="col"><a href="#"><span class="glyphicon glyphicon-print"></span></a></th>
+                                <th scope="col"><a href="/getfile"><span class="glyphicon glyphicon-print"></span></a></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for s in m%}
+                            {% for u in U%}
                             <tr>
-                                <th scope="row">{{s.id}}</th>
-                                <td>{{s.username}}</td>
-                                <td>{{s.date_joined}}</td>
+                                <th scope="row">{{u.id}}</th>
+                                <td>{{u.username}}</td>
+                                <td>{{u.date_joined}}</td>
                             </tr>
                             {%endfor%}
                         </tbody>

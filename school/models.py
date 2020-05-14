@@ -76,7 +76,7 @@ class Fees(models.Model):
     f_lname = models.CharField(max_length=200)
     f_class = models.CharField(max_length=50)
     f_amt = models.IntegerField()
-    f_stu = models.ForeignKey(Student, on_delete=models.CASCADE)
+    f_stu_id = models.ForeignKey(Student, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.f_fname

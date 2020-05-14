@@ -11,7 +11,7 @@
                             ADMIN LOGIN
                         </div>
                         <div class="list-group list-group-flush"><br> {% csrf_token %}
-                            <form method="POST" style="margin-left: 75px;">
+                            <form method="POST" style="margin-left: 75px; " action="/login">
                                 {% csrf_token %}
                                 <div class="form-group row">
 

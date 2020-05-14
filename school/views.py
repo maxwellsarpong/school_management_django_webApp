@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.views.generic import ListView
-from django.contrib.auth.models import auth
+from django.contrib.auth.models import User, auth
 from .models import Student,Teacher,Fees,NonTeacher,Parent,Course
 from django.http import HttpResponse  
 from django.core.mail import send_mail  
@@ -10,53 +10,57 @@ import csv
 
 
 
-#main user interface
+#login  page
 def index(request):
-    #u = Student.objects.all()
-    #return render(request, 'school/index.html',{'u':u})
-    T = Teacher.objects.all()
-    return render(request, 'school/index.html',{'T':T})
-    #return render(request, 'school/index.html',{'T':T})
-    #O = NonTeacher.objects.all()
-    #return render(request, 'school/index.html',{'O':O})
-    #P = Parent.objects.all()
-    #return render(request, 'school/index.html',{'P':P})
-    #C = Course.objects.all()
-    #return render(request, 'school/index.html',{'C':C})
+    return render(request, 'school/login.html')
 
+#main area
+def index2(request):
+    T = Teacher.objects.all()
+    S = Student.objects.all()
+    F = Fees.objects.all()
+    N = NonTeacher.objects.all()
+    P = Parent.objects.all()
+    C = Course.objects.all()
+    U = User.objects.all()
+    return render(request, 'school/index.html', {'T':T,'S':S,'F':F,'N':N,'P':P,'C':C,'U':U})
 
 #function for logging out
 def logout(request):
     auth.logout(request)
     return redirect('/')
-    
-
-#showing the models at the user interface
-def show(request):    
-    T = Teacher.objects.all()
-    return render(request, 'school/show.html',{'T':T})
 
 
-def show1(request):
-    b = Teacher.objects.all()
-    return render(request,'school/index.html#student',{'b':b})
+# function for the delete
+def destroy(request,id):
+    T = Teacher.objects.get(id=id)
+    T.delete()
+    return redirect('school/index.html', {'T':T})
 
+def destroy1(request,id):
+    S = Student.objects.get(id=id)
+    S.delete()
+    return redirect('school/index.html', {'S':S})
 
-def show2(request):
-    c = Parent.objects.all()
-    return render(request, 'school/index.html#parent',{'c':c})
+def destroy2(request,id):
+    F = Fees.objects.get(id=id)
+    F.delete()
+    return redirect('school/index.html', {'F':F})
 
-def show3(request):
-    d = NonTeacher.objects.all()
-    return render(request, 'school/index.html#other',{'d':d})
+def destroy3(request,id):
+    N = NonTeacher.objects.get(id=id)
+    N.delete()
+    return redirect('school/index.html', {'N':N})
 
-def show4(request):
-    e = Course.objects.all()
-    return render(request, 'school/index.html#courses',{'e':e})
+def destroy4(request,id):
+    P = Parent.objects.get(id=id)
+    P.delete()
+    return redirect('school/index.html', {'P':P})
 
-def show5(request):
-    f = Course.objects.all()
-    return render(request, 'school/index.html',{'f':f})
+def destroy5(request,id):
+    C = Course.objects.get(id=id)
+    C.delete()
+    return redirect('index2')
 
 # writing the files to csv
 def getfile(request):
@@ -76,7 +80,7 @@ def login(request):
         user = auth.authenticate(username=username,password=password)
         if user is not None:
             auth.login(request, user)
-            return redirect('school/index.html')
+            return redirect('index2')
         else:
             messages.info(request, 'Invalid username or password')
             return redirect('/')
