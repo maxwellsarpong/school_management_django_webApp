@@ -1,0 +1,67 @@
+{% extends 'school/layout.html'%} {% block content%}
+<div class="container"><br><br>
+    <p style="background-color: rgb(23, 23, 68); margin:auto; color: white;">
+        <a href="/index2">
+            HOME
+        </a>
+    </p><br><br>
+
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div>
+                {% for f in messages%}
+                <div class="alert alert-success alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+            &times;
+            </button> {{f}}
+                </div>
+                {%endfor%}
+            </div>
+
+            <form method="POST" action="/get_fee" style="margin-left: 150px;">
+                {%csrf_token%}
+                <div class="form-group row"><br>
+                    <label for="inputText" class="col-sm-2 col-form-label">FIRST NAME</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="fname" id="inputText" placeholder="first name" required>
+                    </div>
+                </div>
+
+                <div class="form-group row"><br>
+                    <label for="inputText" class="col-sm-2 col-form-label">LAST NAME</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="lname" id="inputText" placeholder="last name" required>
+                    </div>
+                </div>
+
+
+                <div class="form-group row"><br>
+                    <label for="inputText" class="col-sm-2 col-form-label">AMOUNT OWED</label>
+                    <div class="col-sm-6">
+                        <input type="integer" class="form-control" name="amt" id="inputContact" placeholder="amount owed" required>
+                    </div>
+                </div>
+
+
+                <div class="form-group row"><br>
+                    <label for="inputText" class="col-sm-2 col-form-label">STUDENT ID</label>
+
+                    <div class="col-sm-6">
+                        <select name="stu">
+                    {%for t in S%}
+                    <option>{{t.id}}</option>
+                    {%endfor%}
+                </select>
+                    </div>
+                </div>
+
+
+                <button type="submit" class="btn btn-primary"> ADD FEES</button>
+
+
+            </form>
+        </div>
+    </div>
+
+</div>
+{%endblock content%}

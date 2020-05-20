@@ -1,0 +1,58 @@
+{% extends 'school/layout.html'%} {% block content%}
+<div class="container"><br><br>
+    <p style="background-color: rgb(23, 23, 68); margin:auto; color: white;">
+        <a href="/index2">
+            HOME
+        </a>
+    </p><br><br>
+
+
+    <div>
+        {% for f in messages%}
+        <p style="color: rgb(8, 158, 20); text-align:center;">
+            <b>{{f}}</b>
+        </p>
+        {%endfor%}
+    </div>
+
+    <form method="POST" action="/get_stu" style="margin-left: 150px;">
+        {%csrf_token%}
+        <div class="form-group row"><br>
+            <label for="inputText" class="col-sm-2 col-form-label">FIRST NAME</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="fname" id="inputText" placeholder="first name" value="{{S.s_fname}}" required>
+            </div>
+        </div>
+
+        <div class="form-group row"><br>
+            <label for="inputText" class="col-sm-2 col-form-label">LAST NAME</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="lname" id="inputText" placeholder="last name" value="{{S.s_lname}}" required>
+            </div>
+        </div>
+
+        <div class="form-group row"><br>
+            <label for="inputDate" class="col-sm-2 col-form-label">BIRTH DATE</label>
+            <div class="col-sm-6">
+                <input type="date" class="form-control" name="bdate" id="inputDate" placeholder="last name" value="{{S.s_bdate}}" required>
+            </div>
+        </div>
+
+        <div class="form-group row"><br>
+            <label for="inputText" class="col-sm-2 col-form-label">CLASS</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="class" id="inputText" placeholder="class" value="{{S.s_class}" required>
+            </div>
+        </div>
+
+        <div class="form-group row"><br>
+            <label for="inputDate" class="col-sm-2 col-form-label">DATE JOINED</label>
+            <div class="col-sm-6">
+                <input type="date" class="form-control" name="datej" id="inputDate" placeholder="date joined" value="{{S.s_datejoined}}" required>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary"> ADD STUDENT</button>
+    </form>
+
+</div>
+{%endblock content%}

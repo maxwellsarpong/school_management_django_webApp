@@ -1,3 +1,4 @@
+{% load static%}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +12,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
 
+    <link href="{%static 'css/datatables/dataTables.bootstrap4.min.css'%}" rel="stylesheet">
 </head>
 
 <body>
@@ -30,6 +32,22 @@
                 });
             });
         </script>
+
+        <script>
+            $(document).ready(function() {
+                $("#myInput1").on("keyup", function() {
+                    var value = $(this).val().toLowerCase();
+                    $("#myTable1 tr").filter(function() {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+        </script>
+        <script src="{% static 'css/datatables/jquery.dataTables.min.js'%}"></script>
+        <script src="{% static 'css/datatables/dataTables.bootstrap4.min.js'%}"></script>
+
+        <!-- Page level custom scripts -->
+
         {%endblock content%}
     </div>
 </body>
