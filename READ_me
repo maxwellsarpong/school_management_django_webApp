@@ -1,0 +1,6 @@
+This app was written in python and sql
+To run the app, do the following:
+
+1. install django framework
+2. export the database which is the sql file
+3. run the following command: python manage.py runserver
