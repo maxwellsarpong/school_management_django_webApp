@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
+from django.core.paginator import Paginator
 from django.contrib.auth.models import User, auth
 from .models import Student,Teacher,Fees,NonTeacher,Parent,Course
 from django.http import HttpResponse  
@@ -13,12 +14,20 @@ import csv
 def index(request):
     return render(request, 'school/login.html')
 
+
+
 #main area
 def index2(request):
     T = Teacher.objects.all()
     t = len(T)
+
     S = Student.objects.all()
+    paginator = Paginator(S,6)
+    page_number = request.GET.get('page')
+    S = paginator.get_page(page_number)
+
     s = len(S)
+
     F = Fees.objects.all()
     f = len(F)
     N = NonTeacher.objects.all()

@@ -25,7 +25,7 @@ SECRET_KEY = '=_mqed@1502g46$(s0f=yu%-*=z4jed!_c@(vi)th4+pnbku77'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://git.heroku.com/portal-django.git']
+ALLOWED_HOSTS = []
 
 
 # Application definition
