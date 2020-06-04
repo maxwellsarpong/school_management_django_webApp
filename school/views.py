@@ -26,18 +26,18 @@ def index2(request):
     page_number = request.GET.get('page')
     S = paginator.get_page(page_number)
 
-    s = len(S)
+    s = Student.objects.all().count()
 
     F = Fees.objects.all()
-    f = len(F)
+    f = Fees.objects.all().count()
     N = NonTeacher.objects.all()
-    n = len(N)
+    n = NonTeacher.objects.all().count()
     P = Parent.objects.all()
-    p= len(P)
+    p= Parent.objects.all().count()
     C = Course.objects.all()
-    c = len(C)
+    c = Course.objects.all().count()
     U = User.objects.all()
-    u = len(U)
+    u = User.objects.all().count()
     return render(request, 'school/index.html', {'T':T,'S':S,'F':F,'N':N,'P':P,'C':C,'U':U,'t':t,'s':s,'f':f,'n':n,'p':p,'c':c,'u':u})
 
 #function for logging out
@@ -180,15 +180,15 @@ def mail(request):
     if request.method == "POST":
         subject = request.POST['title']
         msg = request.POST['msg'] 
-        fro = request.POST['email']  
-        to = settings.EMAIL_HOST_USER
+        to = request.POST['email']  
+        fro = settings.EMAIL_HOST_USER
         res = send_mail(subject, msg, fro, [to])  
         if(res == 1):  
             messages.info(request, "Mail Sent Successfuly")  
-            return redirect('school/index.html')
+            return redirect('index2')
         else:  
             messages.info(request, "Mail could not sent")  
-        return redirect('school/index.html') 
+        return redirect('index2') 
 
 # displaying the form for adding students
 def add_stu(request):
