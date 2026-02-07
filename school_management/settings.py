@@ -136,6 +136,6 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'  
 EMAIL_PORT = 587  
 EMAIL_HOST_USER = 'maxwellsarpong07@gmail.com'  
-EMAIL_HOST_PASSWORD = 'bigmax@9' 
+EMAIL_HOST_PASSWORD = os.environ.get('PASSWORD', 'REPLACE_ME') 
 
 
